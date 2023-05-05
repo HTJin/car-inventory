@@ -5,47 +5,43 @@
 *,
 *:before,
 *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+html {
+  scroll-snap-type: y mandatory;
+}
+body {
+  background: linear-gradient(238.72deg, #0044a9 0%, #f700a3 100%),
+    radial-gradient(100% 188.01% at 76.14% 0%, #43ddff 0%, #ff0000 100%),
+    linear-gradient(0deg, #db00ff 0%, #14ff00 100%),
+    radial-gradient(59.2% 100% at 50% 100%, #6a00d5 0%, #00e0ff 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #ff9900 0%, #03139c 100%);
+  background-blend-mode: hard-light, overlay, color-burn, color-burn, normal;
 }
 
 :root {
-    --bg-color: #00021b;
-    --main-color: #e51376;
-    --sub-color: #3c4c79;
-    --sub-alt-color: #18214c;
-    --text-color: #fff;
-    --error-color: #02d3b0;
-    --error-extra-color: #3f887c;
-    --colorful-error-color: #02d3b0;
-    --colorful-error-extra-color: #3f887c
+  --bg-color: #00021b;
+  --main-color: #e51376;
+  --sub-color: #3c4c79;
+  --sub-alt-color: #18214c;
+  --text-color: azure;
+  --hover-color: #02d3b0;
+  --hover-extra-color: #3f887c;
+  --colorful-hover-color: #02d3b0;
+  --colorful-hover-extra-color: #3f887c;
 }
 
-@keyframes trance {
-    0% {
-        color: #e51376
-    }
-
-    50% {
-        color: #0e77ee
-    }
-
-    to {
-        color: #e51376
-    }
+@font-face {
+  font-family: "Montserrat";
+  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2);
 }
-
-@keyframes trance-bg {
-    0% {
-        background: #e51376
-    }
-
-    50% {
-        background: #0e77ee
-    }
-
-    to {
-        background: #e51376
-    }
+@font-face {
+  font-family: "Heebo";
+  src: url(https://fonts.gstatic.com/s/heebo/v21/NGSpv5_NC0k9P_v6ZUCbLRAHxK1E1yysdUmm.woff2);
+}
+@font-face {
+  font-family: "Bruno Ace";
+  src: url(https://fonts.gstatic.com/s/brunoace/v1/WwkcxPa2E06x4trkOj_UN6AN.woff2);
 }
