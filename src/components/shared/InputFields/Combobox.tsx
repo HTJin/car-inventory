@@ -18,8 +18,15 @@ interface ComboboxProps {
 export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
   (props, ref) => {
     const [query, setQuery] = useState("");
-    const { name, placeholder, items = [], selectedItem, onChange, className } =
-      props;
+    const [inputValue, setInputValue] = useState("");
+    const {
+      name,
+      placeholder,
+      items = [],
+      selectedItem,
+      onChange,
+      className,
+    } = props;
     const filteredItems =
       query === ""
         ? items
@@ -35,21 +42,27 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       <HeadlessCombobox
         as="div"
         value={selectedItem}
-        onChange={(value) => {
-          console.log("Combobox onChange:", value);
+        onChange={(value: any) => {
+          setInputValue(value.name);
           onChange(value);
         }}
         className={className}
+        placeholder={placeholder}
       >
         <HeadlessCombobox.Label className="text-azure block text-sm font-medium leading-6">
-          {placeholder}
+          {name === "vehicle_type"
+            ? "Vehicle Type"
+            : name.charAt(0).toUpperCase() + name.slice(1)}
         </HeadlessCombobox.Label>
         <div className="relative mt-2">
           <HeadlessCombobox.Input
-            className="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="w-full rounded-md mb-5 border-0 bg-slate-800 py-1.5 pl-3 pr-10 text-[azure] shadow-sm ring-1 ring-inset ring-violet-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             ref={ref}
-            onChange={(event) => setQuery(event.target.value)}
-            value={selectedItem ? selectedItem.name : ""}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setInputValue(event.target.value);
+            }}
+            value={inputValue}
           />
           <HeadlessCombobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {filteredItems.length > 0 ? (

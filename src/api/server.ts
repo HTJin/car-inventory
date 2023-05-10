@@ -50,7 +50,6 @@ export const serverCalls = {
     if (!response.ok) {
       throw new Error("Failed to update data on server");
     }
-    console.log(`Successfully updated car with id: ${id}`);
   },
   delete: async (id: string) => {
     const response = await fetch(
@@ -67,23 +66,4 @@ export const serverCalls = {
       throw new Error(`Failed to delete car with id: ${id}`);
     }
   },
-};
-
-export const getCarsData = async (
-  callType: "makes" | "years" | "types"
-): Promise<any> => {
-  const url = `https://car-data.p.rapidapi.com/cars/${callType}`;
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API}`,
-      "X-RapidAPI-Host": "car-data.p.rapidapi.com",
-    },
-  };
-  try {
-    const response = await fetch(url, options);
-    return await response.json();
-  } catch (error) {
-    throw new Error("Failed to fetch data from server");
-  }
 };
