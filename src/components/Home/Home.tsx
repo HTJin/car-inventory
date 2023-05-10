@@ -15,7 +15,7 @@ interface Props {
 export const Home = (props: Props) => {
   return (
     <Root>
-      <NavBarContainer className="z-10 shadow-xl shadow-indigo-500/70">
+      <NavBarContainer className="z-10 bg-gradient-to-t from-indigo-900 to-slate-950 shadow-xl shadow-indigo-500/70">
         <Logo>
           <LogoA href="#" className="font-bruno">
             Brand
@@ -31,7 +31,7 @@ export const Home = (props: Props) => {
               <NavA to="/">Home</NavA>
             </li>
             <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
-              <NavA to="/dashboard">Register</NavA>
+              <NavA to="/dashboard">Dashboard</NavA>
             </li>
             <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
               <NavA to="/login">Login</NavA>
@@ -81,7 +81,7 @@ export const Home = (props: Props) => {
           Get Started!
         </Link>
       </Main>
-      <div className="relative mb-[10vh] mt-[10vh] flex h-[80vh] snap-center items-center justify-center self-center border border-x-transparent border-y-pink-200 bg-gray-900 bg-opacity-60">
+      <div className="relative my-[10vh] flex h-[80vh] snap-center items-center justify-center self-center border border-x-transparent border-y-pink-200 bg-gray-900 bg-opacity-60">
         <div className="h-4/5 w-[1000px]">
           <h1 className="font-montserrat text-6xl tracking-wide">
             Car Details
@@ -127,28 +127,28 @@ export const Home = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="relative mb-[10vh] mt-[10vh] flex h-[80vh] snap-center items-center justify-center self-center border border-x-transparent border-y-pink-200 bg-gray-900 bg-opacity-60">
-        <div className="h-4/5 w-[1000px] flex">
-          <div className="w-[60em] h-full self-center flex flex-col justify-center pr-20">
+      <div className="relative my-[10vh] flex h-[80vh] snap-center items-center justify-center self-center border border-x-transparent border-y-pink-200 bg-gray-900 bg-opacity-60">
+        <div className="flex h-4/5 w-[1000px]">
+          <div className="flex h-full w-[60em] flex-col justify-center self-center pr-20">
             <h1 className="font-montserrat text-5xl leading-tight tracking-wide">
               Try Our Car Inventory Dashboard Today!
             </h1>
-            <p className="text-lg mt-8">
+            <p className="mt-8 text-lg">
               Register now and add your vehicles to our inventory system. Our
               design is user-friendly and will help you keep track of the
               important information about your cars.
             </p>
-            <div className="w-fit flex flex-col items-center">
-              <p className="text-sm mt-8 -mb-10">Already a member?</p>
+            <div className="flex w-fit flex-col items-center">
+              <p className="-mb-10 mt-8 text-sm">Already a member?</p>
               <Link
-                className="w-fit font-xl mt-14 animate-tranceBg rounded-full px-5 py-3 font-montserrat hover:outline hover:outline-[var(--hover-color)]"
+                className="font-xl mt-14 w-fit animate-tranceBg rounded-full px-5 py-3 font-montserrat hover:outline hover:outline-[var(--hover-color)]"
                 to={"/login"}
               >
                 Log Me In!
               </Link>
             </div>
           </div>
-          <div className="w-[40em] h-5/6 self-center">
+          <div className="h-5/6 w-[40em] self-center">
             <img
               className="h-full rounded-2xl object-cover duration-100 hover:outline hover:outline-[var(--hover-color)]"
               src={tryout}
@@ -172,7 +172,6 @@ const NavBarContainer = styled("div")({
   top: 0,
   left: 0,
   right: 0,
-  backgroundColor: "#222",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
