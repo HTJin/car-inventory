@@ -1,4 +1,5 @@
 import React, { forwardRef, useState } from "react";
+import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox as HeadlessCombobox } from "@headlessui/react";
 
 interface Item {
@@ -49,14 +50,14 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
         className={className}
         placeholder={placeholder}
       >
-        <HeadlessCombobox.Label className="text-azure block text-sm font-medium leading-6">
+        <HeadlessCombobox.Label className="text-var(--text-color) -ml-3 text-sm font-medium">
           {name === "vehicle_type"
-            ? "Vehicle Type"
-            : name.charAt(0).toUpperCase() + name.slice(1)}
+            ? "Body Type:"
+            : name.charAt(0).toUpperCase() + name.slice(1) + ":"}
         </HeadlessCombobox.Label>
-        <div className="relative mt-2">
+        <div className="relative flex flex-col items-center">
           <HeadlessCombobox.Input
-            className="w-full rounded-md mb-5 border-0 bg-slate-800 py-1.5 pl-3 pr-10 text-[azure] shadow-sm ring-1 ring-inset ring-violet-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="hover:-ring-offset-1 w-full rounded-md border-0 bg-slate-800 py-1.5 pl-4 text-[var(--text-color)] shadow-sm ring-1 ring-inset ring-violet-500 hover:ring-1 hover:ring-[var(--hover-color)] focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             ref={ref}
             onChange={(event) => {
               setQuery(event.target.value);
@@ -64,7 +65,13 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             }}
             value={inputValue}
           />
-          <HeadlessCombobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <HeadlessCombobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
+            <ChevronUpDownIcon
+              className="-mr-6 h-5 w-5 rounded-md py-1 text-sky-500 duration-200 hover:outline hover:outline-1 hover:outline-[var(--hover-color)]"
+              aria-hidden="true"
+            />
+          </HeadlessCombobox.Button>
+          <HeadlessCombobox.Options className="absolute z-10 mt-10 max-h-[15.5em] w-fit overflow-auto rounded-md bg-[var(--text-color)] text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {filteredItems.length > 0 ? (
               filteredItems.map((item) => (
                 <HeadlessCombobox.Option
@@ -72,8 +79,10 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                   value={item}
                   className={({ active }) =>
                     classNames(
-                      "relative cursor-default select-none py-2 pl-8 pr-4",
-                      active ? "bg-indigo-600 text-white" : "text-gray-900"
+                      "relative mx-auto cursor-default select-none px-4 py-2",
+                      active
+                        ? "bg-indigo-600 text-[var(--text-color)]"
+                        : "text-gray-900"
                     )
                   }
                 >

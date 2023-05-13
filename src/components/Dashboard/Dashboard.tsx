@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Divider, Stack } from "@mui/material";
 import { CarForm } from "../CarForm";
 
 export const Dashboard = () => {
   return (
-    <div className="p-0 m-0 text-[azure]">
+    <div className="p-0 m-0 text-[var(--text-color)]">
       <div className="fixed left-0 right-0 top-0 z-10 flex items-center justify-between bg-gradient-to-t from-indigo-900 to-slate-950 px-0 py-[.5em] shadow-xl shadow-indigo-500/70">
         <h1 className="ml-[.5em] text-[1.5em] uppercase">
           <Link className="list-none font-bruno no-underline" to="/">
             Brand
           </Link>
         </h1>
-        <ul className="list-none no-underline flex mr-[10em] justify-center w-full ml-[4em]">
+        <ul className="list-none no-underline flex justify-center w-full mr-[8em]">
           <Stack
             direction="row"
-            divider={<Divider color="azure" orientation="vertical" flexItem />}
+            divider={<Divider color="var(--text-color)" orientation="vertical" flexItem />}
             spacing={2}
           >
             <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">

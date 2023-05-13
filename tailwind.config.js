@@ -11,6 +11,7 @@ module.exports = {
       animation: {
         trance: "trance 5s linear infinite",
         tranceBg: "tranceBg 5s linear infinite",
+        bodyBg: "bodyBg 3s ease-in-out infinite",
       },
       keyframes: {
         trance: {
@@ -21,8 +22,13 @@ module.exports = {
           "0%, 100%": { background: "#e51376" },
           "50%": { background: "#001aff" },
         },
+        bodyBg: {
+          "0%, 100%": { background: "#ffd700" },
+          "20%, 80%": { background:"#ffa700" },
+          "50%": { background: "#ffff00" },
+        },
       },
     },
   },
-  plugins: ["react"],
+  plugins: [require("@tailwindcss/forms"), "react"],
 };

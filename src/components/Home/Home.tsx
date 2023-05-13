@@ -24,7 +24,7 @@ export const Home = (props: Props) => {
         <LogoNavigation>
           <Stack
             direction="row"
-            divider={<Divider color="azure" orientation="vertical" flexItem />}
+            divider={<Divider color="var(--text-color)" orientation="vertical" flexItem />}
             spacing={2}
           >
             <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
@@ -164,7 +164,7 @@ export const Home = (props: Props) => {
 const Root = styled("div")({
   padding: 0,
   margin: 0,
-  color: "azure",
+  color: "var(--text-color)",
 });
 
 const NavBarContainer = styled("div")({
@@ -185,20 +185,19 @@ const Logo = styled("h1")({
 const LogoA = styled("a")({
   listStyle: "none",
   textDecoration: "none",
-  color: "azure",
+  color: "var(--text-color)",
 });
 const LogoNavigation = styled("ul")({
   listStyle: "none",
   textDecoration: "none",
   display: "flex",
-  marginRight: "10em",
+  marginRight: "8em",
   justifyContent: "center",
   width: "100%",
-  marginLeft: "4em",
 });
 const NavA = styled(Link)({
   padding: "1em",
-  color: "azure",
+  color: "var(--text-color)",
   textDecoration: "none",
 });
 
