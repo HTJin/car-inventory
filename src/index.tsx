@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { Home, Dashboard, Login } from "./components";
 import "./styles.css";
+import "animate.css";
 import { FirebaseAppProvider } from "reactfire";
 import { firebaseConfig } from "./firebaseConfig";
 import "firebase/auth";

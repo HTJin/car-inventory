@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox as HeadlessCombobox } from "@headlessui/react";
 
@@ -14,6 +14,8 @@ interface ComboboxProps {
   selectedItem: Item | null;
   onChange: (value: any) => void;
   className?: string;
+  onOptionHover?: (item: Item) => void;
+  onOptionClick?: (item: Item) => void;
 }
 
 export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
@@ -27,7 +29,17 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
       selectedItem,
       onChange,
       className,
+      onOptionHover,
+      onOptionClick,
     } = props;
+
+    useEffect(() => {
+      if (selectedItem) {
+        setInputValue(selectedItem.name);
+      } else {
+        setInputValue("");
+      }
+    }, [selectedItem]);
     const filteredItems =
       query === ""
         ? items
@@ -77,6 +89,12 @@ export const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
                 <HeadlessCombobox.Option
                   key={item.id}
                   value={item}
+                  onMouseEnter={() =>
+                    name === "vehicle_type" && onOptionHover?.(item)
+                  }
+                  onClick={() =>
+                    name === "vehicle_type" && onOptionClick?.(item)
+                  }
                   className={({ active }) =>
                     classNames(
                       "relative mx-auto cursor-default select-none px-4 py-2",
