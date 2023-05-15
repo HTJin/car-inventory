@@ -12,6 +12,7 @@ module.exports = {
         trance: "trance 5s linear infinite",
         tranceBg: "tranceBg 5s linear infinite",
         bodyBg: "bodyBg 3s ease-in-out infinite",
+        curl: "curl 2s ease-out .5s both",
       },
       keyframes: {
         trance: {
@@ -24,8 +25,27 @@ module.exports = {
         },
         bodyBg: {
           "0%, 100%": { background: "#ffd700" },
-          "20%, 80%": { background:"#ffa700" },
+          "20%, 80%": { background: "#ffa700" },
           "50%": { background: "#ffff00" },
+        },
+        curl: {
+          "0%": {
+            opacity: 0,
+            borderLeft: "50px solid var(--main-color)",
+            borderRight: "50px solid var(--main-color)",
+            borderRadius: "-10%",
+          },
+          "50%": {
+            opacity: 1,
+            borderLeft: "25px solid var(--main-color)",
+            borderRight: "25px solid var(--main-color)",
+            borderRadius: 0,
+          },
+          "100%": {
+            borderLeft: "15px solid var(--main-color)",
+            borderRight: "15px solid var(--main-color)",
+            borderRadius: "10%",
+          },
         },
       },
     },

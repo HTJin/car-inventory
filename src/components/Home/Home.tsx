@@ -170,8 +170,7 @@ const Root = styled("div")({
 const NavBarContainer = styled("div")({
   position: "fixed",
   top: 0,
-  left: 0,
-  right: 0,
+  width: "100vw",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",

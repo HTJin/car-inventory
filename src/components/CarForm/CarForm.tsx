@@ -16,17 +16,13 @@ import { serverCalls } from "../../api";
 import { Combobox } from "../shared/InputFields/Combobox";
 import newCarData from "../../assets/data/newCarData.json";
 import usedCarData from "../../assets/data/usedCarData.json";
-import { vehicle_types, colors } from "../../assets/data/carData";
+import {
+  vehicle_types,
+  bodyTypes,
+  colors,
+  colorFilters,
+} from "../../assets/data/carData";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
-import convertible from "../../assets/images/body-type/convertible.png";
-import coupe from "../../assets/images/body-type/coupe.png";
-import hatchback from "../../assets/images/body-type/hatchback.png";
-import minivan from "../../assets/images/body-type/minivan.png";
-import pickup from "../../assets/images/body-type/pickup.png";
-import sedan from "../../assets/images/body-type/sedan.png";
-import sports from "../../assets/images/body-type/sports.png";
-import suv from "../../assets/images/body-type/suv.png";
-import wagon from "../../assets/images/body-type/wagon.png";
 
 type BrandModels = {
   [key: string]: string[];
@@ -124,42 +120,6 @@ export const CarForm = (props: CarFormProps) => {
     setStage(fromStage);
   };
 
-  const colorFilters = {
-    Black:
-      "invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(100%) contrast(100%)",
-    Blue: "invert(8%) sepia(98%) saturate(7357%) hue-rotate(248deg) brightness(93%) contrast(145%)",
-    Brown:
-      "invert(16%) sepia(42%) saturate(5363%) hue-rotate(347deg) brightness(96%) contrast(83%)",
-    Gold: "invert(82%) sepia(14%) saturate(6279%) hue-rotate(1deg) brightness(109%) contrast(104%)",
-    Gray: "invert(52%) sepia(0%) saturate(0%) hue-rotate(235deg) brightness(97%) contrast(96%)",
-    Green:
-      "invert(24%) sepia(98%) saturate(1677%) hue-rotate(99deg) brightness(98%) contrast(101%)",
-    Orange:
-      "invert(65%) sepia(37%) saturate(2512%) hue-rotate(359deg) brightness(102%) contrast(105%)",
-    Purple:
-      "invert(9%) sepia(94%) saturate(5113%) hue-rotate(295deg) brightness(83%) contrast(110%)",
-    Red: "invert(13%) sepia(90%) saturate(5627%) hue-rotate(3deg) brightness(98%) contrast(119%)",
-    Silver:
-      "invert(84%) sepia(15%) saturate(0%) hue-rotate(213deg) brightness(91%) contrast(90%)",
-    Tan: "invert(82%) sepia(29%) saturate(387%) hue-rotate(351deg) brightness(87%) contrast(86%)",
-    White:
-      "invert(100%) sepia(0%) saturate(7500%) hue-rotate(24deg) brightness(104%) contrast(105%)",
-    Yellow:
-      "invert(90%) sepia(92%) saturate(1428%) hue-rotate(358deg) brightness(104%) contrast(107%)",
-  };
-
-  const bodyTypes = [
-    { type: "Convertible", image: convertible, width: 100 },
-    { type: "Coupe", image: coupe, width: 100 },
-    { type: "Hatchback", image: hatchback, width: 90 },
-    { type: "Van/Minivan", image: minivan, width: 110 },
-    { type: "Pickup", image: pickup, width: 120 },
-    { type: "Sedan", image: sedan, width: 110 },
-    { type: "Sports", image: sports, width: 110 },
-    { type: "SUV", image: suv, width: 100 },
-    { type: "Station Wagon", image: wagon, width: 120 },
-  ];
-
   const handlePriceInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     let input = event.target.value.replace(/[^\d]/g, "");
     while (input.length < 3) {
@@ -186,6 +146,7 @@ export const CarForm = (props: CarFormProps) => {
   };
 
   const onSubmit = async (data: any, event: any) => {
+    event.preventDefault();
     let price = parseFloat(data.price);
     if (!isNaN(price)) {
       data.price = (price / 100).toFixed(2);
@@ -334,17 +295,22 @@ export const CarForm = (props: CarFormProps) => {
           </div>
         </div>
         <div
-          className={`relative ml-4 mt-2 grid h-[13.75em] w-full scale-90 cursor-pointer select-none grid-cols-3 grid-rows-3 flex-col place-items-center items-end gap-2 rounded-2xl border-2 border-dashed border-indigo-400 p-2 ${
+          className={`relative ml-4 mt-2 grid h-[13.75em] w-full -translate-y-1 scale-90 cursor-pointer select-none grid-cols-3 grid-rows-3 flex-col place-items-center items-end gap-2 rounded-2xl border-2 border-dashed border-indigo-400 bg-slate-600 p-2 ${
             stage < 4 ? "pointer-events-none opacity-40" : ""
           }`}
         >
+          <span className="fixed grid h-full w-full grid-cols-1 divide-y-4 divide-dashed divide-indigo-100 rounded-b-2xl border-b-4 border-solid border-b-indigo-100">
+            <div className="rounded-t-2xl border-t-8 border-double border-t-yellow-500"></div>
+            <div></div>
+            <div className=""></div>
+          </span>
           {bodyTypes.map(({ type, image, width }, index) => {
             const isSelected =
               selectedVehicleType && selectedVehicleType.name === type;
             return (
               <div
                 key={type}
-                className={`flex h-full w-full flex-col items-center justify-center rounded-2xl duration-300 ${
+                className={`flex h-full w-full translate-y-1 flex-col items-center justify-center rounded-2xl duration-300 ${
                   isSelected
                     ? isNew
                       ? "animate-bodyBg"
@@ -370,17 +336,17 @@ export const CarForm = (props: CarFormProps) => {
                       comboboxRef.current.focus();
                     }
                   }
-                  console.log(selectedVehicleType);
                 }}
               >
                 <img
                   src={image}
                   alt={type}
-                  className="h-fit object-cover"
+                  className="z-50 h-fit object-cover"
                   style={{
                     width: `${width}px`,
                     filter: selectedColor
-                      ? `grayscale(100%) ${colorFilters[selectedColor.name]}`
+                      ? // ? `grayscale(100%) ${colorFilters[selectedColor.name]}`
+                        `${colorFilters[selectedColor.name]}`
                       : "none",
                   }}
                 />
@@ -389,7 +355,7 @@ export const CarForm = (props: CarFormProps) => {
           })}
         </div>
       </div>
-      <div className="mx-auto">
+      <div className="mr-4 self-center">
         <button
           type="submit"
           className="font-xl mt-14 animate-tranceBg rounded-full px-10 py-3 font-montserrat tracking-widest hover:outline hover:outline-[var(--hover-color)]"
