@@ -7,6 +7,7 @@ import details from "../../assets/images/details-form.jpg";
 import view from "../../assets/images/quick-view.jpg";
 import organized from "../../assets/images/organized.jpg";
 import tryout from "../../assets/images/tryout.jpg";
+import { NavBar } from "../shared/NavBar";
 
 interface Props {
   title: string;
@@ -15,30 +16,7 @@ interface Props {
 export const Home = (props: Props) => {
   return (
     <Root>
-      <NavBarContainer className="z-10 bg-gradient-to-t from-indigo-900 to-slate-950 shadow-xl shadow-indigo-500/70">
-        <Logo>
-          <LogoA href="#" className="font-bruno">
-            Brand
-          </LogoA>
-        </Logo>
-        <LogoNavigation>
-          <Stack
-            direction="row"
-            divider={<Divider color="var(--text-color)" orientation="vertical" flexItem />}
-            spacing={2}
-          >
-            <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
-              <NavA to="/">Home</NavA>
-            </li>
-            <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
-              <NavA to="/dashboard">Dashboard</NavA>
-            </li>
-            <li className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4">
-              <NavA to="/login">Login</NavA>
-            </li>
-          </Stack>
-        </LogoNavigation>
-      </NavBarContainer>
+      <NavBar />
       <Main className="relative mt-[10vh] h-[80vh] snap-center">
         <h1 className="font-montserrat text-6xl tracking-wide">
           Car Inventory

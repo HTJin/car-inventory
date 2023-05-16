@@ -21,13 +21,13 @@ export const vehicle_types = [
 ];
 export const bodyTypes = [
   { type: "Convertible", image: convertible, width: 100 },
-  { type: "Coupe", image: coupe, width: 100 },
-  { type: "Hatchback", image: hatchback, width: 90 },
-  { type: "Van/Minivan", image: minivan, width: 110 },
-  { type: "Pickup", image: pickup, width: 120 },
+  { type: "Coupe", image: coupe, width: 110 },
+  { type: "Hatchback", image: hatchback, width: 100 },
+  { type: "Van/Minivan", image: minivan, width: 120 },
+  { type: "Pickup", image: pickup, width: 110 },
   { type: "Sedan", image: sedan, width: 110 },
-  { type: "Sports", image: sports, width: 110 },
-  { type: "SUV", image: suv, width: 100 },
+  { type: "Sports", image: sports, width: 120 },
+  { type: "SUV", image: suv, width: 110 },
   { type: "Station Wagon", image: wagon, width: 120 },
 ];
 

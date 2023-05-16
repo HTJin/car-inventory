@@ -180,7 +180,7 @@ export const CarForm = (props: CarFormProps) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col items-start"
+      className="flex select-none flex-col items-start"
     >
       <div className="flex justify-center">
         <Combobox
@@ -310,14 +310,14 @@ export const CarForm = (props: CarFormProps) => {
             return (
               <div
                 key={type}
-                className={`flex h-full w-full translate-y-1 flex-col items-center justify-center rounded-2xl duration-300 ${
+                className={`flex h-full w-full translate-y-0.5 flex-col items-center justify-center rounded-2xl duration-300 ${
                   isSelected
                     ? isNew
                       ? "animate-bodyBg"
-                      : "bg-[var(--hover-extra-color)]"
+                      : "bg-indigo-100"
                     : isNew
                     ? "hover:animate-bodyBg focus:animate-bodyBg"
-                    : "hover:bg-[var(--hover-extra-color)] focus:bg-[var(--hover-extra-color)]"
+                    : "hover:bg-indigo-100 focus:bg-indigo-100"
                 }`}
                 onClick={() => {
                   if (isSelected) {

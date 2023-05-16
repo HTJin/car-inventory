@@ -31,12 +31,14 @@ module.exports = {
         curl: {
           "0%": {
             opacity: 0,
+            filter: "blur(1rem)",
             borderLeft: "50px solid var(--main-color)",
             borderRight: "50px solid var(--main-color)",
             borderRadius: "-10%",
           },
           "50%": {
             opacity: 1,
+            filter: "blur(0)",
             borderLeft: "25px solid var(--main-color)",
             borderRight: "25px solid var(--main-color)",
             borderRadius: 0,
