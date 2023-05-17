@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Modal, Fade } from "@mui/material";
 import { CarForm } from "../CarForm";
 import { CarsDisplay } from "../CarsDisplay";
@@ -25,8 +24,8 @@ export const Dashboard = () => {
           open ? "blur-2xl duration-300 " : ""
         }`}
       >
-        <div onClick={handleOpen}>
-          <CarsDisplay />
+        <div>
+          <CarsDisplay handleOpen={handleOpen} />
         </div>
         <Modal
           open={open}

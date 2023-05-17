@@ -1,10 +1,18 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Divider, Stack } from "@mui/material";
+import { getAuth, signOut } from "firebase/auth";
 
 export const NavBar = () => {
+  const navigate = useNavigate();
+  const auth = getAuth();
   const location = useLocation().pathname;
 
+  const logOut = async () => {
+    await signOut(auth);
+    localStorage.setItem("myAuth", "false");
+    navigate("/")
+  };
+  const myAuth = localStorage.getItem("myAuth");
   return (
     <div
       className={`fixed top-0 z-10 flex w-[100vw] items-center justify-between bg-gradient-to-t from-indigo-900 to-slate-950 px-0 py-[.5em] shadow-xl shadow-indigo-500/70`}
@@ -37,28 +45,53 @@ export const NavBar = () => {
               Home
             </Link>
           </li>
-          <li
-            className={`${
-              location === "/dashboard"
-                ? "underline decoration-sky-400 decoration-wavy underline-offset-4"
-                : "duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
-            }`}
-          >
-            <Link className="p-[1em] no-underline" to="/dashboard">
-              Dashboard
-            </Link>
-          </li>
-          <li
-            className={`${
-              location === "/login"
-                ? "underline decoration-sky-400 decoration-wavy underline-offset-4"
-                : "duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
-            }`}
-          >
-            <Link className="p-[1em] no-underline" to="/login">
-              Login
-            </Link>
-          </li>
+          {myAuth === "true" ? (
+            <li
+              className={`${
+                location === "/dashboard"
+                  ? "underline decoration-sky-400 decoration-wavy underline-offset-4"
+                  : "duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
+              }`}
+            >
+              <Link className="p-[1em] no-underline" to="/dashboard">
+                Dashboard
+              </Link>
+            </li>
+          ) : (
+            <li
+              className={`${
+                location === "/register"
+                  ? "underline decoration-sky-400 decoration-wavy underline-offset-4"
+                  : "duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
+              }`}
+            >
+              <Link className="p-[1em] no-underline" to="/register">
+                Register
+              </Link>
+            </li>
+          )}
+          {myAuth === "true" ? (
+            <li
+              onClick={logOut}
+              className="duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
+            >
+              <Link className="p-[1em] no-underline" to="/">
+                Logout
+              </Link>
+            </li>
+          ) : (
+            <li
+              className={`${
+                location === "/login"
+                  ? "underline decoration-sky-400 decoration-wavy underline-offset-4"
+                  : "duration-300 hover:underline hover:decoration-sky-400 hover:decoration-wavy hover:underline-offset-4"
+              }`}
+            >
+              <Link className="p-[1em] no-underline" to="/login">
+                Login
+              </Link>
+            </li>
+          )}
         </Stack>
       </ul>
     </div>

@@ -8,7 +8,6 @@ interface CarState {
   price: number;
   is_new: boolean;
   vehicle_type: string;
-  fuel_type: string;
   image: string;
 }
 
@@ -20,7 +19,6 @@ const initialState: CarState = {
   price: 0,
   is_new: false,
   vehicle_type: "",
-  fuel_type: "",
   image: "",
 };
 
@@ -49,9 +47,6 @@ const rootSlice = createSlice({
     getVehicleType: (state, action) => {
       state.vehicle_type = action.payload;
     },
-    getFuelType: (state, action) => {
-      state.fuel_type = action.payload;
-    },
     getImage: (state, action) => {
       state.image = action.payload;
     },
@@ -67,6 +62,5 @@ export const {
   getPrice,
   getIsNew,
   getVehicleType,
-  getFuelType,
   getImage,
 } = rootSlice.actions;

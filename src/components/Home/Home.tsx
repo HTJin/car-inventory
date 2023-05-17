@@ -1,6 +1,4 @@
-import React from "react";
 import { styled } from "@mui/system";
-import { Divider, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import landing from "../../assets/images/landing.jpg";
 import details from "../../assets/images/details-form.jpg";
@@ -143,39 +141,6 @@ const Root = styled("div")({
   padding: 0,
   margin: 0,
   color: "var(--text-color)",
-});
-
-const NavBarContainer = styled("div")({
-  position: "fixed",
-  top: 0,
-  width: "100vw",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: ".5em 0",
-});
-const Logo = styled("h1")({
-  marginLeft: ".5em",
-  fontSize: "1.5em",
-  textTransform: "uppercase",
-});
-const LogoA = styled("a")({
-  listStyle: "none",
-  textDecoration: "none",
-  color: "var(--text-color)",
-});
-const LogoNavigation = styled("ul")({
-  listStyle: "none",
-  textDecoration: "none",
-  display: "flex",
-  marginRight: "8em",
-  justifyContent: "center",
-  width: "100%",
-});
-const NavA = styled(Link)({
-  padding: "1em",
-  color: "var(--text-color)",
-  textDecoration: "none",
 });
 
 const Main = styled("div")({

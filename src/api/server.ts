@@ -53,7 +53,7 @@ export const serverCalls = {
   },
   delete: async (id: string) => {
     const response = await fetch(
-      `https://car-inventory-backend.glitch.me/api/cars/${id}`,
+      `https://car-inventory-backend.glitch.me/api/cars/${id}/remove`,
       {
         method: "DELETE",
         headers: {

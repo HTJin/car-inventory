@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useEffect } from "react";
+import { forwardRef, useState, useEffect } from "react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox as HeadlessCombobox } from "@headlessui/react";
 

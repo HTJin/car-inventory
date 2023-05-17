@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import {
@@ -9,7 +9,6 @@ import {
   getPrice,
   getIsNew,
   getVehicleType,
-  getFuelType,
   getImage,
 } from "../../redux/slices/rootSlice";
 import { serverCalls } from "../../api";
@@ -120,7 +119,7 @@ export const CarForm = (props: CarFormProps) => {
     setStage(fromStage);
   };
 
-  const handlePriceInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePriceInput = (event: ChangeEvent<HTMLInputElement>) => {
     let input = event.target.value.replace(/[^\d]/g, "");
     while (input.length < 3) {
       input = "0" + input;
@@ -166,7 +165,6 @@ export const CarForm = (props: CarFormProps) => {
       dispatch(getPrice(data.price));
       dispatch(getIsNew(data.is_new));
       dispatch(getVehicleType(data.vehicle_type));
-      dispatch(getFuelType(data.fuel_type));
       dispatch(getImage(data.image));
       await serverCalls.create(data);
       window.location.reload();

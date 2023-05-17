@@ -1,10 +1,11 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { Home, Dashboard, Login } from "./components";
+import { Home, Dashboard } from "./components";
+import { Register, Login } from "./components/Auth";
 import "./styles.css";
 import { FirebaseAppProvider } from "reactfire";
 import { firebaseConfig } from "./firebaseConfig";
@@ -14,19 +15,20 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Provider store={store}>
         <Router>
           <Routes>
             <Route path="/" element={<Home title={"Car Inventory"} />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
       </Provider>
     </FirebaseAppProvider>
-  </React.StrictMode>
+  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

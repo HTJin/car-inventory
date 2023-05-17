@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { serverCalls } from "../../api";
 import { useFetchData } from "../../hooks";
 import { CarForm } from "../CarForm";
@@ -11,8 +11,11 @@ interface displayData {
     id?: string;
   };
 }
+interface CarsDisplayProps {
+  handleOpen: () => void;
+}
 
-export const CarsDisplay = () => {
+export const CarsDisplay = ({ handleOpen }: CarsDisplayProps) => {
   const { carData, getData } = useFetchData();
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
@@ -39,12 +42,13 @@ export const CarsDisplay = () => {
   };
 
   const myAuth = localStorage.getItem("myAuth");
-  if (!myAuth) {
+  if (myAuth === "true") {
     if (carData.length === 0) {
       return (
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={handleOpen}
           className="flex cursor-pointer select-none flex-col items-center rounded-3xl border-4 border-dashed border-indigo-500 px-[10vw] py-[10vh]"
         >
           <img
@@ -119,7 +123,7 @@ export const CarsDisplay = () => {
   } else {
     return (
       <div className="flex flex-col items-center">
-        <h3 className="text-lg">Hey now, you're not logged in 😮</h3>
+        <h3 className="ml-[1.5ch] text-lg">Hey now, you're not logged in 😮</h3>
         <div className="mt-8 flex flex-col items-center justify-center">
           <Link
             className="font-xl animate-tranceBg rounded-full px-5 py-3 font-montserrat hover:outline hover:outline-[var(--hover-color)]"
@@ -127,7 +131,23 @@ export const CarsDisplay = () => {
           >
             Log Me In!
           </Link>
-          <p className="mb-1">or</p>
+          <div className="relative flex justify-center py-4 text-sm font-medium">
+            <div
+              className="relative inset-0 flex items-center"
+              aria-hidden="true"
+            >
+              <div className="w-10 border-t border-gray-200" />
+            </div>
+            <span className="bg-transparent px-4 text-[var(--text-color)]">
+              Or
+            </span>
+            <div
+              className="relative inset-0 flex items-center"
+              aria-hidden="true"
+            >
+              <div className="w-10 border-t border-gray-200" />
+            </div>
+          </div>
           <Link
             className="font-xl animate-tranceBg rounded-full px-5 py-3 font-montserrat hover:outline hover:outline-[var(--hover-color)]"
             to={"/register"}
