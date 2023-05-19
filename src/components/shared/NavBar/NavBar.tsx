@@ -10,7 +10,7 @@ export const NavBar = () => {
   const logOut = async () => {
     await signOut(auth);
     localStorage.setItem("myAuth", "false");
-    navigate("/")
+    navigate("/");
   };
   const myAuth = localStorage.getItem("myAuth");
   return (
@@ -22,7 +22,7 @@ export const NavBar = () => {
           Brand
         </Link>
       </h1>
-      <ul className="mr-[8em] flex w-full list-none justify-center no-underline">
+      <ul className="absolute mx-auto flex w-full list-none justify-center no-underline">
         <Stack
           direction="row"
           divider={

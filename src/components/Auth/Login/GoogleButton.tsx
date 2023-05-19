@@ -34,10 +34,9 @@ export const GoogleButton = () => {
     }
   });
 
-  const MyAuth = localStorage.getItem("myAuth"); // == 'true'
-  console.log(MyAuth);
+  const myAuth = localStorage.getItem("myAuth");
 
-  if (MyAuth === "true") {
+  if (myAuth === "true") {
     return (
       <button
         className="mx-auto mt-10 flex justify-center rounded-md bg-[var(--main-color)] px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
@@ -54,7 +53,7 @@ export const GoogleButton = () => {
       >
         <span className="flex items-center font-bold tracking-wide">
           <img src={GoogleLogo} alt="Google Logo" className="mr-4 h-8 w-8" />
-          Google Sign In
+          Google
         </span>
       </button>
     );
